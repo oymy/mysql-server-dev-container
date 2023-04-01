@@ -1,0 +1,21 @@
+{
+  "name": "Redis Devcontainer",
+  "dockerFile": "Dockerfile",
+  "appPort": [
+    "3306:3307"
+  ],
+  "context": "..",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-extension-pack"
+  ],
+  "remoteUser": "root",
+  "postCreateCommand": "bash /workspace/post_create_container_init_mysql.sh"
+}
