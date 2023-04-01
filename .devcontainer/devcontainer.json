@@ -17,5 +17,6 @@
     "ms-vscode.cpptools-extension-pack"
   ],
   "remoteUser": "root",
-  "postCreateCommand": "bash /workspace/post_create_container_init_mysql.sh"
+  "postCreateCommand": "bash /workspace/scripts/post_create_container_init_mysql.sh"
+
 }
