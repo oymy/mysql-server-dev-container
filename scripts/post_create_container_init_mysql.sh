@@ -16,11 +16,24 @@ useradd -r -g mysql -s /bin/false mysql
  mkdir mysql-files
  chown mysql:mysql mysql-files
  chmod 750 mysql-files
- bin/mysqld --initialize --user=mysql
- bin/mysql_ssl_rsa_setup
- bin/mysqld_safe --user=mysql &
+# Initialize MySQL with an empty password
+bin/mysqld --initialize-insecure --user=mysql
+
+bin/mysql_ssl_rsa_setup
+bin/mysqld_safe --user=mysql &
+# Wait for MySQL server to start
+sleep 5
+
+# Allow remote connections and set an empty password
+bin/mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
+bin/mysql -e "CREATE USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '';"
+bin/mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
+bin/mysql -e "FLUSH PRIVILEGES;"
+
 # Next command is optional
 cp support-files/mysql.server /etc/init.d/mysql.server
 
 # 设置环境变量
 PATH="/usr/local/mysql/bin:${PATH}"
+
+kill `cat data/*.pid`
