@@ -21,7 +21,7 @@
 ### 对于已安装 VS Code 和 Dev Container 插件和Docker的用户
 1. 克隆或下载本项目到本地。
 2. 打开终端，切换到项目根目录，运行 ./download_redis_source_code.sh 下载 Redis 源码。
-3. 打开 VS Code，点击左下角的绿色按钮，选择 "Reopen in Container"。稍等片刻，VS Code 将自动构建 Dev Container 并打开项目。
+3. 用VS Code打开本项目文件夹，在右下角弹出的对话框中，选择 "Reopen in Container"。等待一段时间，VS Code 将自动构建 Dev Container 并打开项目。
 4. 在 VS Code 中，按 F5 或点击左侧 "Run and Debug" 选项卡中的绿色 "Run" 按钮，开始调试 MySQL Server。
 > 启动的MySQL服务器在Docker镜像中暴露的端口为3307，如有需要可以修改.devcontainer/devcontainer.json
 
