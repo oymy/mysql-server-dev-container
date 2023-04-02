@@ -1,5 +1,5 @@
 {
-  "name": "Redis Devcontainer",
+  "name": "MySQL Devcontainer",
   "dockerFile": "Dockerfile",
   "appPort": [
     "3307:3306"
@@ -13,7 +13,6 @@
     "terminal.integrated.shell.linux": "/bin/bash"
   },
   "extensions": [
-    "ms-vscode.cpptools",
     "ms-vscode.cpptools-extension-pack"
   ],
   "remoteUser": "root",
