@@ -7,9 +7,6 @@ cmake .. -DDOWNLOAD_BOOST=1 -DWITH_BOOST=. -DWITH_DEBUG=1  \
     && make \
     && make install
 
-# Preconfiguration setup
-groupadd mysql
-useradd -r -g mysql -s /bin/false mysql
 # End of source-build specific instructions
 # Postinstallation setup
  cd /usr/local/mysql
@@ -17,10 +14,11 @@ useradd -r -g mysql -s /bin/false mysql
  chown mysql:mysql mysql-files
  chmod 750 mysql-files
 # Initialize MySQL with an empty password
-bin/mysqld --initialize-insecure --user=mysql
+bin/mysqld --initialize-insecure --user=root
 
 bin/mysql_ssl_rsa_setup
-bin/mysqld_safe --user=mysql &
+#用root 方便gdb 调试
+bin/mysqld_safe --user=root &
 # Wait for MySQL server to start
 sleep 5
 
